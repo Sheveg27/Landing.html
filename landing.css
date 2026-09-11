@@ -1,0 +1,608 @@
+/* =============================================================
+   landing.css — dark theme only.
+   Palette matches the Streamlit dashboard:
+     accent #00CC96 — same as equity curve in components.py
+     extra  #636EFA · #EF553B · #AB63FA · #FFA15A · #B6E880
+   ============================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+/* ================= TOKENS ================= */
+:root {
+    --bg:            #0e1117;
+    --bg-elevated:   #161a23;
+    --bg-secondary:  #262730;
+    --border:        rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --text:          #fafafa;
+    --text-muted:    #a0a4b0;
+    --text-dim:      #6b7280;
+    --accent:        #00CC96;
+    --accent-soft:   rgba(0, 204, 150, 0.12);
+    --accent-border: rgba(0, 204, 150, 0.32);
+    --negative:      #EF553B;
+    --warning:       #FFA15A;
+    --card-bg:       rgba(255, 255, 255, 0.03);
+    --shadow:        0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+/* ================= BASE ================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* ================= BACK TO TOP ================= */
+.back-to-top {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 99;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: var(--shadow);
+    transition: transform 0.18s, background 0.18s, border-color 0.18s,
+                color 0.18s, box-shadow 0.18s;
+}
+
+.back-to-top:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent-border);
+    color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 204, 150, 0.28);
+}
+
+.back-to-top:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ================= LAYOUT ================= */
+.landing {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 3rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1.75rem;
+    letter-spacing: -0.01em;
+}
+
+.anchor-section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 2rem;
+}
+
+/* ================= HERO ================= */
+.hero {
+    text-align: center;
+    padding-bottom: 3rem;
+    animation: fade-in 0.5s ease-out;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0 auto 0.5rem;
+    line-height: 1.6;
+}
+
+.hero-hint {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    letter-spacing: 0.03em;
+    margin: 0.5rem 0 0;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.6rem;
+    font-size: 0.98rem;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s,
+                border-color 0.15s, color 0.15s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent) 0%, #00a37a 100%);
+    color: #001510;
+    box-shadow: 0 8px 20px rgba(0, 204, 150, 0.22);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #00d1a0 0%, var(--accent) 100%);
+    box-shadow: 0 12px 28px rgba(0, 204, 150, 0.35);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border-strong);
+}
+
+.btn-ghost:hover {
+    border-color: var(--accent-border);
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+
+/* ================= METRICS ================= */
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 0 0 3.5rem;
+    padding: 1.25rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.metric-value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.metric-value.negative { color: var(--negative); }
+
+.metric-delta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.metric-delta.positive { color: var(--accent); }
+
+/* ================= FEATURES ================= */
+.features {
+    margin-bottom: 4rem;
+    animation: fade-in 0.6s ease-out;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem 1.4rem 1.7rem;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.18s, border-color 0.18s, background 0.18s,
+                box-shadow 0.18s;
+}
+
+.card:hover {
+    border-color: var(--accent-border);
+    background: var(--accent-soft);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.card-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.7rem;
+    line-height: 1;
+}
+
+.card h3 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin: 0 0 0.45rem;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.55;
+}
+
+.card-arrow {
+    position: absolute;
+    right: 1.4rem;
+    bottom: 1.15rem;
+    font-size: 1.05rem;
+    color: var(--accent);
+    opacity: 0.55;
+    transition: opacity 0.18s, transform 0.18s;
+}
+
+.card:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+/* ================= PANEL (chart / caption) ================= */
+.panel-body {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem 1.25rem 1rem;
+}
+
+.panel-caption {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin: -1rem 0 1rem;
+}
+
+.panel-caption code {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.1rem 0.35rem;
+    font-family: "SF Mono", Consolas, Monaco, monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+}
+
+/* ================= EQUITY CURVE ================= */
+.equity-svg {
+    display: block;
+    width: 100%;
+    height: 220px;
+}
+
+.grid-line {
+    stroke: var(--border);
+    stroke-width: 1;
+    stroke-dasharray: 4 6;
+}
+
+.axis-line {
+    stroke: var(--border-strong);
+    stroke-width: 1;
+}
+
+.equity-fill { fill: url(#equityFill); }
+
+.equity-line {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 6px rgba(0, 204, 150, 0.35));
+}
+
+/* ================= LEGEND ================= */
+.panel-legend {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.legend-swatch {
+    display: inline-block;
+    width: 14px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent);
+}
+
+.legend-value {
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* ================= STATS GRID ================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    transition: background 0.15s;
+}
+
+.stat:hover { background: var(--card-bg); }
+
+.stat-name {
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.stat-value.accent   { color: var(--accent); }
+.stat-value.negative { color: var(--negative); }
+.stat-value.warning  { color: var(--warning); }
+
+/* ================= TABLE ================= */
+.table-wrap {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow-x: auto;
+}
+
+.trades-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    min-width: 900px;
+}
+
+.trades-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+    padding: 0.75rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.trades-table tbody td {
+    padding: 0.65rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.trades-table tbody tr:last-child td { border-bottom: none; }
+.trades-table tbody tr:hover td      { background: var(--card-bg); }
+
+.trades-table .pos { color: var(--accent); font-weight: 600; }
+.trades-table .neg { color: var(--negative); font-weight: 600; }
+
+/* grade badges */
+.grade {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: #0e1117;
+}
+
+.grade-a { background: #00CC96; }
+.grade-b { background: #636EFA; color: #fff; }
+.grade-c { background: #AB63FA; color: #fff; }
+.grade-d { background: #FFA15A; }
+.grade-e { background: #EF553B; color: #fff; }
+
+/* ================= HEATMAP ================= */
+.heatmap {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+}
+
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: 70px repeat(7, 1fr);
+    gap: 3px;
+}
+
+.hm-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    cursor: default;
+    transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.hm-cell:not(.hm-head):not(.hm-rowhead):hover {
+    transform: scale(1.04);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hm-head,
+.hm-rowhead {
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.hm-rowhead {
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+}
+
+/* Viridis-ish scale — matches Plotly heatmap in components.py */
+.hm-l1 { background: #2a2f4a; color: #8f96b8; }
+.hm-l2 { background: #3b4d8a; color: #dfe3ff; }
+.hm-l3 { background: #21889a; color: #eafcff; }
+.hm-l4 { background: #00a37a; color: #001510; }
+.hm-l5 { background: #00CC96; color: #001510; }
+
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.hm-swatch {
+    display: inline-block;
+    width: 22px;
+    height: 10px;
+    border-radius: 3px;
+}
+
+.hm-legend-label {
+    padding: 0 0.4rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+.footer p { margin: 0.25rem 0; }
+
+.footer-muted {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 640px) {
+    .landing { padding: 2.5rem 1rem 2rem; }
+    .hero    { padding-bottom: 2rem; }
+
+    .back-to-top {
+        right: 0.9rem;
+        bottom: 0.9rem;
+        width: 40px;
+        height: 40px;
+    }
+
+    .legend-value { margin-left: 0; width: 100%; text-align: right; }
+    .stat         { border-right: none; }
+
+    .heatmap      { padding: 1rem; }
+    .heatmap-grid { grid-template-columns: 56px repeat(7, 1fr); gap: 2px; }
+    .hm-cell      { height: 32px; font-size: 0.7rem; }
+    .hm-rowhead   { padding-right: 0.35rem; }
+}

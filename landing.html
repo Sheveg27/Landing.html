@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Composite Framework Dashboard</title>
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body id="top">
+
+    <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
+
+    <main class="landing">
+
+        <!-- ================= HERO ================= -->
+        <section class="hero">
+            <h1 class="hero-title">Declarative Backtest Control Panel</h1>
+            <p class="hero-subtitle">
+                Rule builder, deterministic simulation engine,
+                grid parameter optimization and interactive analytics —
+                all in one interface.
+            </p>
+            <p class="hero-hint">Streamlit · Python · Lightweight Charts</p>
+
+            <div class="hero-cta">
+                <a href="#chart" class="btn btn-primary">Open the app →</a>
+                <a href="#features" class="btn btn-ghost">Documentation</a>
+            </div>
+        </section>
+
+        <!-- ================= METRICS STRIP ================= -->
+        <section class="metrics">
+            <div class="metric">
+                <span class="metric-label">CAGR</span>
+                <span class="metric-value">24.18%</span>
+                <span class="metric-delta positive">+3.42%</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Max Drawdown</span>
+                <span class="metric-value negative">−11.06%</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Sharpe Ratio</span>
+                <span class="metric-value">1.87</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Profit Factor</span>
+                <span class="metric-value">2.14</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Trades</span>
+                <span class="metric-value">148</span>
+            </div>
+        </section>
+
+        <!-- ================= FEATURES ================= -->
+        <section class="features" id="features">
+            <h2 class="section-title">What's inside</h2>
+
+            <div class="grid">
+                <a href="#chart" class="card">
+                    <div class="card-icon">📈</div>
+                    <h3>Interactive Chart</h3>
+                    <p>Equity curve and price history rendered with Lightweight Charts.</p>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="#statistics" class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Detailed Statistics</h3>
+                    <p>18 performance metrics: CAGR, MaxDD, Sharpe, Profit Factor, Recovery Factor and more.</p>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="#trades" class="card">
+                    <div class="card-icon">📋</div>
+                    <h3>Trade Registry</h3>
+                    <p>Every closed position in Wealth‑Lab format: entry/exit, PnL, MAE/MFE, grades A–F.</p>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="#optimizer" class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>Parameter Optimizer</h3>
+                    <p>Automatic extraction of numeric parameters from rules and grid search over the selected metric.</p>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="#history" class="card">
+                    <div class="card-icon">📜</div>
+                    <h3>Backtest History</h3>
+                    <p>Automatic CSV log with filters by date, data file, metrics, and rule contents.</p>
+                    <span class="card-arrow">→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ================= INTERACTIVE CHART ================= -->
+        <section id="chart" class="anchor-section">
+            <h2 class="section-title">📈 Interactive Chart</h2>
+
+            <div class="panel-body">
+                <svg class="equity-svg" viewBox="0 0 800 220" preserveAspectRatio="none" aria-label="Equity curve">
+                    <defs>
+                        <linearGradient id="equityFill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%"   stop-color="#00CC96" stop-opacity="0.30"/>
+                            <stop offset="100%" stop-color="#00CC96" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+
+                    <line x1="0" y1="55"  x2="800" y2="55"  class="grid-line"/>
+                    <line x1="0" y1="110" x2="800" y2="110" class="grid-line"/>
+                    <line x1="0" y1="165" x2="800" y2="165" class="grid-line"/>
+                    <line x1="0" y1="180" x2="800" y2="180" class="axis-line"/>
+
+                    <path class="equity-fill"
+                          d="M 0,180
+                             L 0,170 L 40,160 L 80,168 L 120,150 L 160,140 L 200,148
+                             L 240,125 L 280,118 L 320,132 L 360,110 L 400,98 L 440,105
+                             L 480,80 L 520,72 L 560,85 L 600,60 L 640,52 L 680,58
+                             L 720,40 L 760,28 L 800,22
+                             L 800,180 Z"/>
+
+                    <polyline class="equity-line"
+                              points="0,170 40,160 80,168 120,150 160,140 200,148
+                                      240,125 280,118 320,132 360,110 400,98 440,105
+                                      480,80 520,72 560,85 600,60 640,52 680,58
+                                      720,40 760,28 800,22"/>
+                </svg>
+
+                <div class="panel-legend">
+                    <span class="legend-item">
+                        <span class="legend-swatch"></span>
+                        Equity
+                    </span>
+                    <span class="legend-value">+142.8% · 2010–2026</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DETAILED STATISTICS ================= -->
+        <section id="statistics" class="anchor-section">
+            <h2 class="section-title">📊 Detailed Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat"><span class="stat-name">Starting Capital</span><span class="stat-value">$10,000.00</span></div>
+                <div class="stat"><span class="stat-name">Final Equity</span><span class="stat-value accent">$24,280.14</span></div>
+                <div class="stat"><span class="stat-name">Profit</span><span class="stat-value accent">$14,280.14</span></div>
+                <div class="stat"><span class="stat-name">Profit %</span><span class="stat-value accent">+142.80%</span></div>
+                <div class="stat"><span class="stat-name">CAGR</span><span class="stat-value accent">24.18%</span></div>
+                <div class="stat"><span class="stat-name">Exposure %</span><span class="stat-value">38.42%</span></div>
+                <div class="stat"><span class="stat-name">Sharpe Ratio</span><span class="stat-value">1.87</span></div>
+                <div class="stat"><span class="stat-name">WealthLab Score</span><span class="stat-value">94.21</span></div>
+                <div class="stat"><span class="stat-name">Number of Positions</span><span class="stat-value">148</span></div>
+                <div class="stat"><span class="stat-name">Average Profit %</span><span class="stat-value accent">1.94%</span></div>
+                <div class="stat"><span class="stat-name">Profit Factor</span><span class="stat-value accent">2.14</span></div>
+                <div class="stat"><span class="stat-name">Payoff Ratio</span><span class="stat-value">1.62</span></div>
+                <div class="stat"><span class="stat-name">Average Bars Held</span><span class="stat-value">6.30</span></div>
+                <div class="stat"><span class="stat-name">NSF Count</span><span class="stat-value warning">3</span></div>
+                <div class="stat"><span class="stat-name">Maximum Drawdown</span><span class="stat-value negative">−$1,106.42</span></div>
+                <div class="stat"><span class="stat-name">Maximum Drawdown %</span><span class="stat-value negative">−11.06%</span></div>
+                <div class="stat"><span class="stat-name">Recovery Factor</span><span class="stat-value">12.91</span></div>
+                <div class="stat"><span class="stat-name">Win %</span><span class="stat-value accent">62.16%</span></div>
+            </div>
+        </section>
+
+        <!-- ================= TRADE REGISTRY ================= -->
+        <section id="trades" class="anchor-section">
+            <h2 class="section-title">📋 Trade Registry</h2>
+            <div class="table-wrap">
+                <table class="trades-table">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Entry Date</th>
+                            <th>Weekday</th>
+                            <th>Entry ($)</th>
+                            <th>Exit ($)</th>
+                            <th>Shares</th>
+                            <th>PnL ($)</th>
+                            <th>Return (%)</th>
+                            <th>Bars</th>
+                            <th>Exit Reason</th>
+                            <th>MAE (%)</th>
+                            <th>MFE (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="grade grade-a">A</span></td>
+                            <td>2024-03-11</td><td>Mon</td>
+                            <td>48.12</td><td>51.06</td><td>207.65</td>
+                            <td class="pos">+$610.47</td>
+                            <td class="pos">+6.11%</td>
+                            <td>4</td><td>Target hit</td>
+                            <td class="neg">−0.84%</td><td class="pos">+6.42%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="grade grade-b">B</span></td>
+                            <td>2024-03-18</td><td>Mon</td>
+                            <td>49.30</td><td>50.84</td><td>202.84</td>
+                            <td class="pos">+$312.36</td>
+                            <td class="pos">+3.12%</td>
+                            <td>5</td><td>Target hit</td>
+                            <td class="neg">−1.12%</td><td class="pos">+3.55%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="grade grade-c">C</span></td>
+                            <td>2024-04-02</td><td>Tue</td>
+                            <td>51.05</td><td>51.34</td><td>195.88</td>
+                            <td class="pos">+$56.80</td>
+                            <td class="pos">+0.57%</td>
+                            <td>3</td><td>Week close</td>
+                            <td class="neg">−0.48%</td><td class="pos">+0.92%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="grade grade-d">D</span></td>
+                            <td>2024-04-15</td><td>Mon</td>
+                            <td>52.18</td><td>51.62</td><td>191.63</td>
+                            <td class="neg">−$107.31</td>
+                            <td class="neg">−1.07%</td>
+                            <td>2</td><td>Stop loss</td>
+                            <td class="neg">−1.36%</td><td class="pos">+0.41%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="grade grade-a">A</span></td>
+                            <td>2024-05-06</td><td>Mon</td>
+                            <td>53.02</td><td>56.21</td><td>188.61</td>
+                            <td class="pos">+$601.66</td>
+                            <td class="pos">+6.02%</td>
+                            <td>7</td><td>Target hit</td>
+                            <td class="neg">−1.05%</td><td class="pos">+6.38%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="grade grade-e">E</span></td>
+                            <td>2024-05-20</td><td>Mon</td>
+                            <td>55.10</td><td>53.72</td><td>181.49</td>
+                            <td class="neg">−$250.46</td>
+                            <td class="neg">−2.50%</td>
+                            <td>3</td><td>Stop loss</td>
+                            <td class="neg">−2.88%</td><td class="pos">+0.35%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="grade grade-b">B</span></td>
+                            <td>2024-06-03</td><td>Mon</td>
+                            <td>56.44</td><td>58.22</td><td>177.18</td>
+                            <td class="pos">+$315.36</td>
+                            <td class="pos">+3.15%</td>
+                            <td>6</td><td>Target hit</td>
+                            <td class="neg">−0.91%</td><td class="pos">+3.44%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ================= OPTIMIZER ================= -->
+        <section id="optimizer" class="anchor-section">
+            <h2 class="section-title">🚀 Parameter Optimizer</h2>
+
+            <div class="heatmap">
+                <div class="heatmap-grid">
+                    <div class="hm-cell hm-head"></div>
+                    <div class="hm-cell hm-head">0.02</div>
+                    <div class="hm-cell hm-head">0.04</div>
+                    <div class="hm-cell hm-head">0.06</div>
+                    <div class="hm-cell hm-head">0.08</div>
+                    <div class="hm-cell hm-head">0.10</div>
+                    <div class="hm-cell hm-head">0.12</div>
+                    <div class="hm-cell hm-head">0.14</div>
+
+                    <div class="hm-cell hm-rowhead">0.01</div>
+                    <div class="hm-cell hm-l1">8.2</div>
+                    <div class="hm-cell hm-l2">12.4</div>
+                    <div class="hm-cell hm-l3">17.9</div>
+                    <div class="hm-cell hm-l4">21.6</div>
+                    <div class="hm-cell hm-l5">24.2</div>
+                    <div class="hm-cell hm-l4">22.1</div>
+                    <div class="hm-cell hm-l3">18.4</div>
+
+                    <div class="hm-cell hm-rowhead">0.02</div>
+                    <div class="hm-cell hm-l1">6.8</div>
+                    <div class="hm-cell hm-l2">11.1</div>
+                    <div class="hm-cell hm-l3">16.4</div>
+                    <div class="hm-cell hm-l4">19.8</div>
+                    <div class="hm-cell hm-l4">20.9</div>
+                    <div class="hm-cell hm-l3">17.2</div>
+                    <div class="hm-cell hm-l2">13.6</div>
+
+                    <div class="hm-cell hm-rowhead">0.03</div>
+                    <div class="hm-cell hm-l1">5.4</div>
+                    <div class="hm-cell hm-l2">9.7</div>
+                    <div class="hm-cell hm-l3">14.2</div>
+                    <div class="hm-cell hm-l3">16.8</div>
+                    <div class="hm-cell hm-l3">17.5</div>
+                    <div class="hm-cell hm-l2">14.1</div>
+                    <div class="hm-cell hm-l1">10.2</div>
+
+                    <div class="hm-cell hm-rowhead">0.04</div>
+                    <div class="hm-cell hm-l1">4.1</div>
+                    <div class="hm-cell hm-l1">7.8</div>
+                    <div class="hm-cell hm-l2">11.6</div>
+                    <div class="hm-cell hm-l2">13.4</div>
+                    <div class="hm-cell hm-l2">13.9</div>
+                    <div class="hm-cell hm-l1">10.8</div>
+                    <div class="hm-cell hm-l1">7.6</div>
+
+                    <div class="hm-cell hm-rowhead">0.05</div>
+                    <div class="hm-cell hm-l1">2.8</div>
+                    <div class="hm-cell hm-l1">5.6</div>
+                    <div class="hm-cell hm-l1">8.2</div>
+                    <div class="hm-cell hm-l1">9.6</div>
+                    <div class="hm-cell hm-l1">9.9</div>
+                    <div class="hm-cell hm-l1">7.4</div>
+                    <div class="hm-cell hm-l1">4.8</div>
+
+                    <div class="hm-cell hm-rowhead">0.06</div>
+                    <div class="hm-cell hm-l1">1.2</div>
+                    <div class="hm-cell hm-l1">3.1</div>
+                    <div class="hm-cell hm-l1">4.8</div>
+                    <div class="hm-cell hm-l1">5.6</div>
+                    <div class="hm-cell hm-l1">5.8</div>
+                    <div class="hm-cell hm-l1">4.1</div>
+                    <div class="hm-cell hm-l1">2.2</div>
+
+                    <div class="hm-cell hm-rowhead">0.07</div>
+                    <div class="hm-cell hm-l1">0.4</div>
+                    <div class="hm-cell hm-l1">1.6</div>
+                    <div class="hm-cell hm-l1">2.4</div>
+                    <div class="hm-cell hm-l1">2.9</div>
+                    <div class="hm-cell hm-l1">2.7</div>
+                    <div class="hm-cell hm-l1">1.8</div>
+                    <div class="hm-cell hm-l1">0.9</div>
+                </div>
+
+                <div class="heatmap-legend">
+                    <span class="hm-legend-label">Low</span>
+                    <span class="hm-swatch hm-l1"></span>
+                    <span class="hm-swatch hm-l2"></span>
+                    <span class="hm-swatch hm-l3"></span>
+                    <span class="hm-swatch hm-l4"></span>
+                    <span class="hm-swatch hm-l5"></span>
+                    <span class="hm-legend-label">High</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= HISTORY ================= -->
+        <section id="history" class="anchor-section">
+            <h2 class="section-title">📜 Backtest History</h2>
+            <p class="panel-caption">
+                Automatic log · <code>logs/backtest_history.csv</code> · click a row in the app to inspect rules
+            </p>
+
+            <div class="table-wrap">
+                <table class="trades-table">
+                    <thead>
+                        <tr>
+                            <th>Run time</th>
+                            <th>Data file</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Initial ($)</th>
+                            <th>Final ($)</th>
+                            <th>Trades</th>
+                            <th>NSF</th>
+                            <th>CAGR (%)</th>
+                            <th>MaxDD (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2026-01-14 09:42</td>
+                            <td>TQQQ_2010.csv</td>
+                            <td>2010-01-01</td>
+                            <td>2026-01-01</td>
+                            <td>10,000</td>
+                            <td class="pos">24,280</td>
+                            <td>148</td>
+                            <td>3</td>
+                            <td class="pos">24.18</td>
+                            <td class="neg">−11.06</td>
+                        </tr>
+                        <tr>
+                            <td>2026-01-13 17:18</td>
+                            <td>TQQQ_2010.csv</td>
+                            <td>2010-01-01</td>
+                            <td>2026-01-01</td>
+                            <td>10,000</td>
+                            <td class="pos">22,914</td>
+                            <td>142</td>
+                            <td>2</td>
+                            <td class="pos">22.61</td>
+                            <td class="neg">−12.40</td>
+                        </tr>
+                        <tr>
+                            <td>2026-01-11 11:05</td>
+                            <td>SPY_2005.csv</td>
+                            <td>2005-01-01</td>
+                            <td>2026-01-01</td>
+                            <td>10,000</td>
+                            <td class="pos">18,406</td>
+                            <td>204</td>
+                            <td>0</td>
+                            <td class="pos">14.72</td>
+                            <td class="neg">−9.84</td>
+                        </tr>
+                        <tr>
+                            <td>2026-01-09 08:31</td>
+                            <td>TQQQ_2010.csv</td>
+                            <td>2015-01-01</td>
+                            <td>2026-01-01</td>
+                            <td>10,000</td>
+                            <td class="pos">15,120</td>
+                            <td>88</td>
+                            <td>1</td>
+                            <td class="pos">17.94</td>
+                            <td class="neg">−13.62</td>
+                        </tr>
+                        <tr>
+                            <td>2026-01-07 20:47</td>
+                            <td>NVDA_2016.csv</td>
+                            <td>2016-01-01</td>
+                            <td>2026-01-01</td>
+                            <td>10,000</td>
+                            <td class="pos">31,752</td>
+                            <td>96</td>
+                            <td>7</td>
+                            <td class="pos">32.85</td>
+                            <td class="neg">−18.20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ================= FOOTER ================= -->
+        <footer class="footer">
+            <p>Composite Framework · Streamlit dashboard for declarative backtesting</p>
+            <p class="footer-muted">© 2026 · All rights reserved</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
